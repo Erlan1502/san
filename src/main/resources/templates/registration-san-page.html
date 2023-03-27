@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Внесите информацию о себе</h2>
+<br>
+<br>
+<!--/*@thymesVar id="patient" type="com.sanreg.sanatorium.entity.Patient"*/-->
+<form th:method="POST" th:action="@{/savePatient}" th:object="${patient}">
+    Дата прибытия(Обязательное поле) <input type="date" th:field = "*{dateOfArrival}"/>
+    <p th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
+
+    <br>
+    <br>
+    Полное имя <input type="text" th:field = "*{fullName}"/>
+    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
+
+    <br>
+    <br>
+    Комната <input type="text" th:field = "*{room}"/>
+    <p th:if="${#fields.hasErrors('room')}" th:errors="*{room}">Name Error</p>
+    <br>
+    <br>
+
+    Пол
+    <input type="radio" th:id = "male" th:value="Мужской" th:field = "*{sex}">
+    <label th:for="male">Мужской</label>
+    <input type="radio" th:id = "female" th:value="Женский" th:field = "*{sex}">
+    <label th:for="female">Женский</label>
+
+    <br>
+    <br>
+    Дата рождения (Обязательное поле) <input type="date" th:field = "*{dateOfBirth}"/>
+    <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
+    <br>
+    <br>
+    Адрес <input type="text" th:field = "*{adress}"/>
+    <br>
+    <br>
+    Телефонный номер <input type="text" th:field = "*{phoneNumber}"/>
+    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>
+    <br>
+    <br>
+    Количество дней <input type="text" th:field = "*{daysOfStay}"/>
+    <p th:if="${#fields.hasErrors('daysOfStay')}" th:errors="*{daysOfStay}">Name Error</p>
+    <br>
+    <br>
+    День отъезда (Обязательное поле) <input type="date" th:field = "*{depatureDay}"/>
+    <p th:if="${#fields.hasErrors('depatureDay')}" th:errors="*{depatureDay}">Name Error</p>
+    <br>
+    <br>
+    <br>
+    <input type = "submit" value = "OK"/>
+</form>
+</body>
+</html>

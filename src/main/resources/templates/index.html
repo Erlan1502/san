@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+</html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Санаторий "Щучинский"</title>
+    <link rel="stylesheet" href="C:\Users\erlan\Desktop\sanatorium\src\main\resources\templates\style_01.css">
+</head>
+<body>
+
+
+
+<h1 class="head">Добро пожаловать в санаторий Щучинский</h1>
+<br>
+Если вы хотите внести данные о себе нажмите кнопку
+<form th:action="@{/registration}" th:method="GET">
+    <input type="submit" value="Внести информацию о себе" />
+</form>
+<br>
+<br>
+<br>
+<div sec:authorize="hasRole('ROLE_DOCTOR')">
+    Список актуальных пациентов
+    <form th:action="@{/findAllPatients}" th:method="GET">
+        <input type="submit" value="Увидеть всех пациентов" />
+    </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form th:method="GET" th:action="@{'/logout'}">
+    <button type="submit" class="btn">
+        Выйти из учетной записи
+    </button>
+</form>
+
+<br>
+<br>
+<br>
+
+
+</body>
+</html>
+
+
+
+

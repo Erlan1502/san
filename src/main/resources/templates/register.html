@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Регистрация </title>
+</head>
+<body>
+<div th:if="${param.fail}">
+    Данный пользователь с такими параметрами email и/или именем существует
+</div>
+
+<!--/*@thymesVar id="user" type="com.sanreg.sanatorium.entity.UserEntity"*/-->
+<form method="post" th:action="@{/register/save}" th:object="${user}">
+    Имя пользователя <input type="text" th:field = "*{username}"/>
+    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
+
+    <br>
+    <br>
+    Пароль <input type="text" th:field = "*{password}"/>
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
+
+    <br>
+    <br>
+    Электронная почта <input type="text" th:field = "*{email}"/>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</p>
+    <br>
+    <br>
+
+    <input type = "submit" value = "OK"/>
+</form>
+</body>
+</html>
