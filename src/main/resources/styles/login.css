@@ -1,0 +1,98 @@
+
+.title{
+  color: var(--main-color);
+  text-align: center;
+  font-size: 24px;
+
+}
+
+.card-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.card{
+  max-width: 396px;
+  width: 100%;
+  background-color: #fff;
+  color:red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow:  0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.field,
+.card-button{
+  height: 54px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+.field{
+  border: 2px solid #ccc;
+  padding: 8px;
+}
+
+.field:focus{
+  border-color: var(--main-color);
+}
+
+.field::placeholder{
+  color:darkgrey;
+}
+
+.field:first-child{
+  margin-top:0;
+}
+
+.card-button:hover{
+  background-color: var(--main-color-opacity);
+  cursor: pointer;
+}
+
+.card-button{
+  transition: background-color 300ms;
+  font-size: 16px;
+  color: var(--main-color);
+}
+
+.card-button.submit{
+  margin-top: 24px;
+  color: var(--main-color);
+}
+
+.card-link{
+  text-decoration: none;
+  display: block;
+  margin-top:24px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--main-color);
+  transition: color 300ms;
+}
+
+.card-link:hover{
+  color: #a3c1ad;
+}
+
+.aside{
+  text-align: center;
+  margin-top:16px;
+  font-size:14px;
+}
+
+
+
+
+
+

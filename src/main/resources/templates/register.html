@@ -1,31 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Регистрация </title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-<div th:if="${param.fail}">
-    Данный пользователь с такими параметрами email и/или именем существует
-</div>
-
-<!--/*@thymesVar id="user" type="com.sanreg.sanatorium.entity.UserEntity"*/-->
-<form method="post" th:action="@{/register/save}" th:object="${user}">
-    Имя пользователя <input type="text" th:field = "*{username}"/>
-    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
-
-    <br>
-    <br>
-    Пароль <input type="text" th:field = "*{password}"/>
-    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
-
-    <br>
-    <br>
-    Электронная почта <input type="text" th:field = "*{email}"/>
-    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</p>
-    <br>
-    <br>
-
-    <input type = "submit" value = "OK"/>
-</form>
+    <div class="main-background"></div>
+    <div class="card-wrapper">
+        <!--/*@thymesVar id="user" type="com.sanreg.sanatorium.entity.UserEntity"*/-->
+        <form method="post" class="card" th:action="@{/register/save}" th:object="${user}">
+            <input type="text" class="field" th:field = "*{username}" placeholder="Имя пользователя"/>
+            <input type="password" class="field" th:field = "*{password}" placeholder="Пароль"/>
+            <input type="email" class="field" th:field = "*{email}" placeholder="Электронная почта"/>
+            <input type = "submit" class="card-link" value = "Зарегистрироваться"/>
+            <div class="aside">
+                <div th:if="${param.fail}">Данный пользователь с такими параметрами email и/или именем существует.</div>
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Ошибка в имени пользователя.</div>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Недопустимые символы пароля.</div>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Недопустимые символы электронной почты.</div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

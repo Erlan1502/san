@@ -1,55 +1,55 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/info.css">
+</head>
 <body>
-<h2>Внесите информацию о себе</h2>
-<br>
-<br>
-<!--/*@thymesVar id="patient" type="com.sanreg.sanatorium.entity.Patient"*/-->
-<form th:method="POST" th:action="@{/savePatient}" th:object="${patient}">
-    Дата прибытия(Обязательное поле) <input type="date" th:field = "*{dateOfArrival}"/>
-    <p th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
+<div class="main-background"></div>
+<div class="card-wrapper">
+    <!--/*@thymesVar id="patient" type="com.sanreg.sanatorium.entity.Patient"*/-->
+    <form th:method="POST" class="card" th:action="@{/savePatient}" th:object="${patient}">
+        <h2 class="title">Внесите информацию о себе</h2>
+        <p class="correction">Дата вашего прибытия</p>
+        <input type="date" class="field" th:field = "*{dateOfArrival}"/>
+        <p class="errors" th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
+        <p class="correction">Ваше имя</p>
+        <input type="text" class="field" th:field = "*{fullName}" placeholder="Полное имя"/>
+        <p class="errors"  th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
+        <p class="correction">Номер вашей комнаты</p>
+        <input type="text" class="field" th:field = "*{room}" placeholder="Номер комнаты"/>
+        <p class="errors" th:if="${#fields.hasErrors('room')}" th:errors="*{room}">Name Error</p>
 
-    <br>
-    <br>
-    Полное имя <input type="text" th:field = "*{fullName}"/>
-    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
+        <p class="correction">
+            Ваш пол
+        </p>
+        <select class="field" id="sex" th:field="*{sex}">
+            <option th:id="male" th:value="Мужской" th:field="*{sex}">Мужской</option>
+            <option th:id="female" th:value="Женский" th:field="*{sex}">Женский</option>        
+        </select>
+        <!-- <input type="radio" th:id = "male" th:value="Мужской" th:field = "*{sex}">
+        <label th:for="male">Мужской</label>
+        <input type="radio" th:id = "female" th:value="Женский" th:field = "*{sex}">
+        <label th:for="female">Женский</label> -->
 
-    <br>
-    <br>
-    Комната <input type="text" th:field = "*{room}"/>
-    <p th:if="${#fields.hasErrors('room')}" th:errors="*{room}">Name Error</p>
-    <br>
-    <br>
-
-    Пол
-    <input type="radio" th:id = "male" th:value="Мужской" th:field = "*{sex}">
-    <label th:for="male">Мужской</label>
-    <input type="radio" th:id = "female" th:value="Женский" th:field = "*{sex}">
-    <label th:for="female">Женский</label>
-
-    <br>
-    <br>
-    Дата рождения (Обязательное поле) <input type="date" th:field = "*{dateOfBirth}"/>
-    <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
-    <br>
-    <br>
-    Адрес <input type="text" th:field = "*{adress}"/>
-    <br>
-    <br>
-    Телефонный номер <input type="text" th:field = "*{phoneNumber}"/>
-    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>
-    <br>
-    <br>
-    Количество дней <input type="text" th:field = "*{daysOfStay}"/>
-    <p th:if="${#fields.hasErrors('daysOfStay')}" th:errors="*{daysOfStay}">Name Error</p>
-    <br>
-    <br>
-    День отъезда (Обязательное поле) <input type="date" th:field = "*{depatureDay}"/>
-    <p th:if="${#fields.hasErrors('depatureDay')}" th:errors="*{depatureDay}">Name Error</p>
-    <br>
-    <br>
-    <br>
-    <input type = "submit" value = "OK"/>
-</form>
+        <p class="correction">Ваша дата рождения</p>
+        <input type="date" class="field" th:field = "*{dateOfBirth}" placeholder="Дата рождения"/>
+        <p class="errors" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
+        <p class="correction">Ваш адрес проживания</p>
+        <input type="text" class="field" th:field = "*{adress}" placeholder="Адрес"/>
+        <p class="correction">Ваш телефон</p>
+        <input type="text" class="field" th:field = "*{phoneNumber}" placeholder="Телефонный номер"/>
+        <p class="errors" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>
+        <p class="correction">Количество дней</p>
+        <input type="text" class="field" th:field="*{daysOfStay}" placeholder="Количество дней"/>
+        <p class="errors" th:if="${#fields.hasErrors('daysOfStay')}" th:errors="*{daysOfStay}">Name Error</p>
+        <p class="correction">Дата вашего отъезда</p>
+        <input type="date" class="field" th:field = "*{depatureDay}"/>
+        <p class="errors" th:if="${#fields.hasErrors('depatureDay')}" th:errors="*{depatureDay}">Name Error</p>
+        <input type = "submit" class="card-button submit" value = "ВНЕСТИ ДАННЫЕ"/>
+    </form>
+</div>
 </body>
 </html>

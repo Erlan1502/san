@@ -1,36 +1,30 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Вход в систему </title>
+  <meta charset="UTF-8">
+  <title>Вход в систему</title>
+  <link rel="stylesheet" href="../styles/common.css">
+  <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-<div th:if="${param.activationMessage}">
-    Пройдите по ссылке отправленной по указанной вами почте.
+<div class="main-background"></div>
+<div class="card-wrapper">
+  <!--/*@thymesVar id="userEntity" type="com.sanreg.sanatorium.entity.UserEntity"*/-->
+  <form method="post" class="card" th:action="@{/login}" th:object="${userEntity}">
+    <h2 class="title">Авторизация</h2>
+    <input type="text" class="field" placeholder="Имя пользователя" name="username"/>
+    <input type="password" class="field" placeholder="Пароль" name="password"/>
+    <input type="submit" class="card-button submit" value="Войти"/>
+    <a href="/register" class="card-link">Зарегистрироваться</a>
+      <div class="aside">
+          <div th:if="${param.activationMessage}">Пройдите по ссылке отправленной по указанной вами почте.</div>
+          <div th:if="${param.successActivationMessage}">Почта успешно подтверждена, вход в систему доступен.</div>
+          <div th:if="${param.failActivationMessage}">Данный ключ уже был использован для регистрации.</div>
+          <div th:if="${param.error}">Несуществующее имя или пароль.</div>
+          <div th:if="${param.logout}">Вы вышли из системы.</div>
+          <div th:if="${param.failActive}">Аккаунт не активирован, ключ активации был выслан на указанную почту.</div>
+      </div>
+  </form>
 </div>
-<div th:if="${param.successActivationMessage}">
-    Почта успешно подтверждена, вход в систему доступен.
-</div>
-<div th:if="${param.failActivationMessage}">
-    Данный ключ уже был использован для регистрации.
-</div>
-
-<div th:if="${param.error}">
-    Несуществующее имя или пароль
-</div>
-<div th:if="${param.logout}">
-    Вы вышли из системы.
-</div>
-<!--/*@thymesVar id="userEntity" type="com.sanreg.sanatorium.entity.UserEntity"*/-->
-<div th:if="${param.failActive}">Аккаунт не активирован, ключ активации был выслан на указанную почту
-
-</div>
-
-<form method="post" th:action="@{/login}" th:object="${userEntity}">
-    <div><label> Имя пользователя : <input type="text" name="username"/></label></div>
-    <div><label> Пароль: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Войти"/></div>
-    <div><input type="button" value = "Регистрация пользователя" onclick = "window.location.href = '/register'"></div>
-</form>
-
 </body>
 </html>
