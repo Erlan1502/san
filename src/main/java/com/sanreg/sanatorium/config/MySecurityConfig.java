@@ -28,7 +28,7 @@ public class MySecurityConfig {
         return httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/login", "/register","/register/save","/register/activate/*").permitAll()
+                .requestMatchers("/login", "/register","/register/save","/register/activate/*","/css/**","/images/**").permitAll()
                 .requestMatchers("/","/registration","/savePatient").hasAnyRole("PATIENT","DOCTOR")
                 .requestMatchers("/findAllPatients","/updatePatient/{id}","/deletePatient/{id}","/addByDoctor").hasRole("DOCTOR")
                 .and()

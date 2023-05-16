@@ -1,50 +1,69 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-<h2>Внесите информацию о больном</h2>
-<br>
-<br>
-<!--/*@thymesVar id="patient" type="com.sanreg.sanatorium.entity.Patient"*/-->
-<form th:method="POST" th:action="@{/savePatient}" th:object="${patient}">
-    Дата прибытия(Обязательное поле) <input type="date" th:field = "*{dateOfArrival}"/>
-    <p th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
-    <br><br>
-    Полное имя <input type="text" th:field = "*{fullName}"/>
-    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
-    <br><br>
-    Комната <input type="text" th:field = "*{room}"/>
-    <p th:if="${#fields.hasErrors('room')}" th:errors="*{room}">Name Error</p>
-    <br><br>
-    Пол
-    <input type="radio" th:id = "male" th:value="Мужской" th:field = "*{sex}">
-    <label th:for="male">Мужской</label>
-    <input type="radio" th:id = "female" th:value="Женский" th:field = "*{sex}">
-    <label th:for="female">Женский</label>
-    <br><br>
-    Дата рождения (Обязательное поле) <input type="date" th:field = "*{dateOfBirth}"/>
-    <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
-    <br><br>
-    Адрес <input type="text" th:field = "*{adress}"/>
-    <br><br>
-    Телефонный номер <input type="text" th:field = "*{phoneNumber}"/>
-    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>
-    <br><br>
-    Количество дней <input type="text" th:field = "*{daysOfStay}"/>
-    <p th:if="${#fields.hasErrors('daysOfStay')}" th:errors="*{daysOfStay}">Name Error</p>
-    <br><br>
-    День отъезда (Обязательное поле) <input type="date" th:field = "*{depatureDay}"/>
-    <p th:if="${#fields.hasErrors('depatureDay')}" th:errors="*{depatureDay}">Name Error</p>
-    <br><br><br>
-    Артериальное давление <input type="text" th:field = "*{arterialPressure}"/>
-    <p th:if="${#fields.hasErrors('arterialPressure')}" th:errors="*{arterialPressure}">Name Error</p>
-    <br><br><br>
-    Диагноз <input type="text" th:field = "*{diagnosis}"/>
-    <p th:if="${#fields.hasErrors('diagnosis')}" th:errors="*{diagnosis}">Name Error</p>
-    <br><br><br>
-    Процедуры лечения <input type="text" th:field = "*{procedures}"/>
-    <p th:if="${#fields.hasErrors('procedures')}" th:errors="*{procedures}">Name Error</p>
-    <br><br><br>
-    <input type = "submit" value = "OK"/>
-</form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Регистрация </title>
+        <link rel="stylesheet" type="text/css" href="../static/css/common.css" th:href="@{/css/common.css}">
+        <link rel="stylesheet" type="text/css" href="../static/css/info.css" th:href="@{/css/info.css}">
+    </head>
+    <body>
+        <div class="main-background"></div>
+        <div class="card-wrapper">
+            <!--/*@thymesVar id="patient" type="com.sanreg.sanatorium.entity.Patient"*/-->
+            <form th:method="POST" class="card" th:action="@{/savePatient}" th:object="${patient}">
+                <h2 class="title">Внести информацию о новом пациенте</h2>
+                
+                <p class="correction">Дата прибытия пациента</p>
+                <input  class="field" type="date" th:field = "*{dateOfArrival}" placeholder="Дата прибытия"/>
+                <p class="errors" th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
+
+                <p class="correction">Полное имя пациента</p>
+                <input  class="field" type="text" th:field = "*{fullName}" placeholder="ФИО пациента"/>
+                <p class="errors" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
+
+                <p class="correction">Комната пациента</p>
+                <input class="field" type="text" th:field = "*{room}" placeholder="Номер комнаты"/>
+                <p class="errors" th:if="${#fields.hasErrors('room')}" th:errors="*{room}">Name Error</p>
+
+                <p class="correction">Пол пациента</p>
+                <select class="field" id="sex" th:field="*{sex}">
+                    <option th:id="male" th:value="Мужской" th:field="*{sex}">Мужской</option>
+                    <option th:id="female" th:value="Женский" th:field="*{sex}">Женский</option>        
+                </select>
+
+                <p class="correction">Дата рождения пациента</p> 
+                <input class="field" type="date" th:field = "*{dateOfBirth}" placeholder="Дата рождения"/>
+                <p class="errors" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
+
+                <p class="correction">Адрес пациента</p> 
+                <input class="field" type="text" th:field = "*{adress}" placeholder="Адрес пациента"/>
+
+                <p class="correction">Телефонный номер пациента</p> 
+                <input class="field" type="text" th:field = "*{phoneNumber}" placeholder="Телефонный номер пациента"/>
+                <p class="errors" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>
+
+                <p class="correction">Количество дней пребывания пациента</p> 
+                <input class="field" type="text" th:field = "*{daysOfStay}" placeholder="Количество дней"/>
+                <p class="errors" th:if="${#fields.hasErrors('daysOfStay')}" th:errors="*{daysOfStay}">Name Error</p>
+
+                <p class="correction">Дата отъезда пациента</p>  
+                <input class="field" type="date" th:field = "*{depatureDay}" placeholder="Дата отъезда"/>
+                <p class="errors" th:if="${#fields.hasErrors('depatureDay')}" th:errors="*{depatureDay}">Name Error</p>
+
+                <p class="correction">Артериальное давление пациента</p>
+                <input class="field" type="text" th:field = "*{arterialPressure}" placeholder="Артериальное давление"/>
+                <p class="errors" th:if="${#fields.hasErrors('arterialPressure')}" th:errors="*{arterialPressure}">Name Error</p>
+
+                <p class="correction">Диагноз пациента</p>
+                <input class="field" type="text" th:field = "*{diagnosis}" placeholder="Диагноз пациента"/>
+                <p class="errors" th:if="${#fields.hasErrors('diagnosis')}" th:errors="*{diagnosis}">Name Error</p>
+
+                <p class="correction">Процедуры пациента</p>
+                <input class="field" type="text" th:field = "*{procedures}" placeholder="Процедуры пациента"/>
+                <p class="errors" th:if="${#fields.hasErrors('procedures')}" th:errors="*{procedures}">Name Error</p>
+
+                <input class="card-button submit" type="submit" value="ВНЕСТИ ИЗМЕНЕНИЯ"/>
+            </form>
+        </div>
+    </body>
 </html>

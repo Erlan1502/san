@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход в систему</title>
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/info.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/info.css" th:href="@{/css/info.css}">
 </head>
 <body>
 <div class="main-background"></div>
@@ -15,8 +15,8 @@
         <p class="correction">Дата вашего прибытия</p>
         <input type="date" class="field" th:field = "*{dateOfArrival}"/>
         <p class="errors" th:if="${#fields.hasErrors('dateOfArrival')}" th:errors="*{dateOfArrival}">Name Error</p>
-        <p class="correction">Ваше имя</p>
-        <input type="text" class="field" th:field = "*{fullName}" placeholder="Полное имя"/>
+        <p class="correction">Ваше ФИО</p>
+        <input type="text" class="field" th:field = "*{fullName}" placeholder="Фамилия Имя Отчество"/>
         <p class="errors"  th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</p>
         <p class="correction">Номер вашей комнаты</p>
         <input type="text" class="field" th:field = "*{room}" placeholder="Номер комнаты"/>
@@ -29,10 +29,6 @@
             <option th:id="male" th:value="Мужской" th:field="*{sex}">Мужской</option>
             <option th:id="female" th:value="Женский" th:field="*{sex}">Женский</option>        
         </select>
-        <!-- <input type="radio" th:id = "male" th:value="Мужской" th:field = "*{sex}">
-        <label th:for="male">Мужской</label>
-        <input type="radio" th:id = "female" th:value="Женский" th:field = "*{sex}">
-        <label th:for="female">Женский</label> -->
 
         <p class="correction">Ваша дата рождения</p>
         <input type="date" class="field" th:field = "*{dateOfBirth}" placeholder="Дата рождения"/>

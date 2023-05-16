@@ -89,10 +89,13 @@
   margin-top:16px;
   font-size:14px;
 }
+
 .correction{
-    margin-top:16px;
+    margin-top:24px;
+    margin-bottom: 8px;
     font-size:16px;
 }
+
 .errors{
     font-size:12px;
     color:red;

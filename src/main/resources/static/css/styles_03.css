@@ -279,12 +279,17 @@ body {
   line-height: 120%;
   font-weight: 400;
 }
+.staff-photo{
+  background-image: url('../images/Ded.png');
+}
+
 
 @media (max-width: 900px) {
   .section.staff .sub-title {
     font-size: 1.5rem;
   }
 }
+
 
 /* Start animations */
 .fadeIn {

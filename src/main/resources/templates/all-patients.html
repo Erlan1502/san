@@ -1,85 +1,95 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Список пациентов</title>
-</head>
-<body>
-
-<h2>Все пациенты</h2>
-<br>
-<table>
-    <tr>
-        <th>
-            Дата прибытия
-        </th>
-        <th>
-            Полное имя
-        </th>
-        <th>
-            Комната
-        </th>
-        <th>
-            Пол
-        </th>
-        <th>
-            Дата рождения
-        </th>
-        <th>
-            Адрес
-        </th>
-        <th>
-            Телефонный номер
-        </th>
-        <th>
-            Количество дней
-        </th>
-        <th>
-            День отъезда
-        </th>
-        <th>
-            Артериальное давление
-        </th>
-        <th>
-            Диагноз
-        </th>
-        <th>
-            Процедуры
-        </th>
-    </tr>
-
-        <!--/*@thymesVar id="patientList" type="java.util.List"*/-->
-    <th:block th:each="patient : ${patientList}">
-        <tr>
-            <td th:text="${patient.dateOfArrival}"></td>
-            <td th:text="${patient.fullName}"></td>
-            <td th:text="${patient.room}"></td>
-            <td th:text="${patient.sex}"></td>
-            <td th:text="${patient.dateOfBirth}"></td>
-            <td th:text="${patient.adress}"></td>
-            <td th:text="${patient.phoneNumber}"></td>
-            <td th:text="${patient.daysOfStay}"></td>
-            <td th:text="${patient.depatureDay}"></td>
-            <td th:text="${patient.arterialPressure}"></td>
-            <td th:text="${patient.diagnosis}"></td>
-            <td th:text="${patient.procedures}"></td>
-            <td>
-                <form action="#" th:method="DELETE" th:action="@{'/deletePatient/{id}'(id=${patient.id})}">
-                    <button type="submit" class="btn">
-                        УДАЛИТЬ
-                    </button>
-                </form>
-            </td>
-            <td>
-                <form th:method="GET" th:action="@{'/updatePatient/{id}'(id=${patient.id})}">
-                    <button type="submit" class="btn">
-                        ОБНОВИТЬ
-                    </button>
-                </form>
-            </td>
-        </tr>
-    </th:block>
-</table>
-<br>
-<input type="button" value = "Add" onclick = "window.location.href = '/addByDoctor'">
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Регистрация </title>
+        <link rel="stylesheet" type="text/css" href="../static/css/common.css" th:href="@{/css/common.css}">
+        <link rel="stylesheet" type="text/css" href="../static/css/all_patient.css" th:href="@{/css/all_patient.css}">
+        <title>Список пациентов</title>
+    </head>
+    <body>
+        <div class="main-background"></div>
+        <div class="card-wrapper">
+            <h2 class="title">Список пациентов</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Дата прибытия
+                            </th>
+                            <th>
+                                Полное имя
+                            </th>
+                            <th>
+                                Комната
+                            </th>
+                            <th>
+                                Пол
+                            </th>
+                            <th>
+                                Дата рождения
+                            </th>
+                            <th>
+                                Адрес
+                            </th>
+                            <th>
+                                Телефонный номер
+                            </th>
+                            <th>
+                                Количество дней
+                            </th>
+                            <th>
+                                День отъезда
+                            </th>
+                            <th>
+                                Артериальное давление
+                            </th>
+                            <th>
+                                Диагноз
+                            </th>
+                            <th>
+                                Процедуры
+                            </th>
+                            <th>
+                                Удаление/Добавление
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <!--/*@thymesVar id="patientList" type="java.util.List"*/-->
+                        <th:block th:each="patient : ${patientList}">
+                            <tr>
+                                <td th:text="${patient.dateOfArrival}"></td>
+                                <td th:text="${patient.fullName}"></td>
+                                <td th:text="${patient.room}"></td>
+                                <td th:text="${patient.sex}"></td>
+                                <td th:text="${patient.dateOfBirth}"></td>
+                                <td th:text="${patient.adress}"></td>
+                                <td th:text="${patient.phoneNumber}"></td>
+                                <td th:text="${patient.daysOfStay}"></td>
+                                <td th:text="${patient.depatureDay}"></td>
+                                <td th:text="${patient.arterialPressure}"></td>
+                                <td th:text="${patient.diagnosis}"></td>
+                                <td th:text="${patient.procedures}"></td>
+                                <td>
+                                    <form action="#" th:method="DELETE" th:action="@{'/deletePatient/{id}'(id=${patient.id})}" style="margin:0; padding:0; display: inline;">
+                                        <button type="submit" class="btn">
+                                            УДАЛИТЬ
+                                        </button>
+                                    </form>
+                                    <form th:method="GET" th:action="@{'/updatePatient/{id}'(id=${patient.id})}" style="margin:0; padding:0; display: inline;">
+                                        <button type="submit" class="btn">
+                                            ОБНОВИТЬ
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                </table>
+                <div class="button-add">            
+                    <button onclick = "window.location.href = '/addByDoctor'">Добавление нового пациента</button>
+                </div>
+        </div>
+    </body>
 </html>

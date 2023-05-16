@@ -6,29 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Санаторий "Щучинский"</title>
-    <link rel="stylesheet" href="..\styles\styles_03.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles_03.css" th:href="@{/css/styles_03.css}">
 
 <body>
   <div class="main-background"></div>
 
   <header class="header fadeIn">
-    <button class="button" th:action="@{/registration}" th:method="GET">      
-        Регистрация
-    </button>
-    <button class="button" th:method="GET" th:action="@{'/logout'}">
-        Выйти
-    </button>
+    <form th:method="GET" th:action="@{/registration}">
+      <button class="button" type="submit">      
+          Регистрация
+      </button>
+    </form>
+    <form th:method="GET" th:action="@{'/logout'}">
+      <button class="button" type="submit">
+          Выйти
+      </button>
+    </form>
   </header>
-
   <section class="section main">
     <div class="inner">
       <h1 class="title">санаторий "щучинский"</h1>
-
       <div class="filler">
         <div class="dot"></div>
       </div>
-
-      <button class="button" th:action="@{/findAllPatients}" th:method="GET">Список пациентов</button>
+      <form th:method="GET" th:action="@{/findAllPatients}">
+        <button class="button" type="submit">
+          Список пациентов
+        </button>
+      </form>
     </div>
 
     <a href="#staff" class="scroll-marker"></a>
@@ -40,8 +45,7 @@
 
       <div class="staff-list">
         <div class="staff-item">
-          <div class="staff-photo" style="background-image: url('../images/Ded.png')"></div>
-
+          <div class="staff-photo"></div>
           <div class="staff-info">
             <div class="staff-name">Кубесов Шаймерден Магруппович</div>
             <div class="staff-post">Главный врач</div>

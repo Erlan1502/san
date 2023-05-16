@@ -53,7 +53,6 @@ public class UserServiceImplementation implements UserService{
 
     }
 
-
     @Override
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email);
