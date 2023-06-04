@@ -20,6 +20,7 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @NotNull(message = "Поле не может быть пустым, заполните его.")
     @Column(name = "date_of_arrival")
     private Date dateOfArrival;
@@ -40,10 +41,12 @@ public class Patient {
 
     @Column(name = "sex")
     private String sex;
+
     @NotNull(message = "Поле не может быть пустым, заполните его.")
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @NotEmpty(message="Это поле не должно быть пустым заполните его")
     @Column(name = "adress")
     private String adress;
 
@@ -56,6 +59,7 @@ public class Patient {
     @Max(value = 31, message = "Количество дней должно быть не больше 32" )
     @Column(name = "days_of_stay")
     private int daysOfStay;
+
     @NotNull(message = "Поле не может быть пустым, заполните его.")
     @Column(name = "departure_day")
     private Date depatureDay;

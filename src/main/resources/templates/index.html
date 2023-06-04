@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Санаторий "Щучинский"</title>
+    <title>Санаторий</title>
     <link rel="stylesheet" type="text/css" href="../static/css/styles_03.css" th:href="@{/css/styles_03.css}">
 
 <body>
@@ -25,15 +25,18 @@
   </header>
   <section class="section main">
     <div class="inner">
-      <h1 class="title">санаторий "щучинский"</h1>
+      <h1 class="title">санаторий "зеленый"</h1>
+        <p class="title" th:if="${param.successRegistration}" style="color:brown; font-size:30px;">вы были успешно внесены в базу пациентов</p>
       <div class="filler">
         <div class="dot"></div>
       </div>
-      <form th:method="GET" th:action="@{/findAllPatients}">
-        <button class="button" type="submit">
-          Список пациентов
-        </button>
-      </form>
+      <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <form th:method="GET" th:action="@{/findAllPatients}">
+          <button class="button" type="submit">
+            Список пациентов
+          </button>
+        </form>
+      </div>
     </div>
 
     <a href="#staff" class="scroll-marker"></a>

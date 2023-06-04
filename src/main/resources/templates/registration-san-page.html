@@ -35,6 +35,7 @@
         <p class="errors" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Name Error</p>
         <p class="correction">Ваш адрес проживания</p>
         <input type="text" class="field" th:field = "*{adress}" placeholder="Адрес"/>
+        <p class="errors" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}">Name Error</p>
         <p class="correction">Ваш телефон</p>
         <input type="text" class="field" th:field = "*{phoneNumber}" placeholder="Телефонный номер"/>
         <p class="errors" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</p>

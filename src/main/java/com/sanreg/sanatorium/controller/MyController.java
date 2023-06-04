@@ -36,7 +36,7 @@ public class MyController {
             return "registration-san-page";
         }
         patientService.savePatient(patient);
-        return "redirect:/";
+        return "redirect:/?successRegistration";
     }
 
     @GetMapping("/findAllPatients")
